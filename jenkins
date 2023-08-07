@@ -1,0 +1,16 @@
+pipleine{
+    any agent
+
+    stages {
+        stage (build) {
+            steps{
+            echo 'hello-world!'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'I will always say hello-world!'
+        }
+    }
+}
