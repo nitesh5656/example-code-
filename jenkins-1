@@ -1,0 +1,33 @@
+pipeline{
+    anyagent
+    stages{
+        stage ("build") {
+            steps{
+                sh"build the code"
+            }
+        }
+        stage ("test") {
+            steps{
+                sh"test the code"
+            }
+        }
+        stage ("deploy") {
+            when {
+                branch "master"
+            }
+            steps{
+                sh"deploy the code"
+            }
+        }
+    }post  {
+        always {
+            sh "echo pipeline completed"
+        }
+        success {
+            sh "echo pipeline succedded"
+        }
+        failure{
+            sh "echo pipeline failed"
+        }
+    }
+}
